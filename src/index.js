@@ -43,11 +43,10 @@ function onSearch(e) {
 }
 
 async function fetchImgs() {
-  loadBtn.disable();
-
   try {
-    preloader.show();
     const img = await apiImg.fetchImages();
+    loadBtn.disable();
+    preloader.show();
     renderImgs(img);
   } catch (error) {
     console.log(error);

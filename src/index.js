@@ -14,7 +14,7 @@ import preloaderFactory from './js/preloader';
 import getAllRefs from './js/refs';
 
 defaults.animateSpeed = 'fast';
-
+preloader.hide();
 const preloader = preloaderFactory('.preloader');
 const allRefs = getAllRefs();
 const apiImg = new ApiService();
@@ -27,7 +27,7 @@ allRefs.formRef.addEventListener('submit', onSearch);
 loadBtn.refs.button.addEventListener('click', fetchImgs);
 allRefs.listRef.addEventListener('click', onImgClick);
 
-preloader.hide();
+
 
 function onSearch(e) {
   e.preventDefault();

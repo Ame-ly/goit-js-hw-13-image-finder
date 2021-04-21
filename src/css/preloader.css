@@ -9,14 +9,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.8s;
 }
 
 .preloader.disable {
   opacity: 0;
   pointer-events: none;
 }
-
+.preloader.enable {
+  opacity: 1;
+  transition: opacity 0.8s;
+}
 .preloader__icon {
   width: 50px;
   height: 50px;

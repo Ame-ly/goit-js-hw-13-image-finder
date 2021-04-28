@@ -23,6 +23,7 @@ export default class ApiService {
       //  return console.error
     }
     const result = await response.json();
+
     console.log(result);
     this.incrementPage();
     return await Promise.resolve(result.hits);

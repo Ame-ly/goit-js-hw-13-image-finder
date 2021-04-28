@@ -27,34 +27,48 @@ allRefs.formRef.addEventListener('submit', onSearch);
 loadBtn.refs.button.addEventListener('click', fetchImgs);
 allRefs.listRef.addEventListener('click', onImgClick);
 
+// preloader.show();
+
 function onSearch(e) {
   e.preventDefault();
   clearGallery();
   const inputQuery = e.currentTarget.elements.query.value;
   apiImg.query = inputQuery.trim();
-
+  console.log(apiImg);
+  //  preloader.show();
+  // if (apiImg.query === '') {
+  //   onError();
+  //   e.currentTarget.reset();
+  //   console.log('картинок нет');
+  //   return;
+  // }
   loadBtn.show();
   apiImg.resetPage();
   clearGallery();
   fetchImgs();
+
   e.currentTarget.reset();
 
   scrollImg(e);
 }
 
 async function fetchImgs() {
+  preloader.show();
   try {
     const img = await apiImg.fetchImages();
-    loadBtn.disable();
-    preloader.show();
-    renderImgs(img);
+    if (img) {
+      renderImgs(img);
+      preloader.hide();
+      loadBtn.disable();
+    }
+
+    // preloader.show();
   } catch (error) {
     console.log(error);
     onError();
   }
 
   loadBtn.enable();
-  preloader.hide();
 }
 
 function onImgClick(e) {
